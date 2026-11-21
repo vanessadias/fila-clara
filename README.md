@@ -38,12 +38,12 @@ O objetivo desta PoC é demonstrar que o sistema consegue consultar dados persis
 
 Foi selecionado o trecho de consulta e escolha de caixa da jornada da Persona 1, Vanessa, apresentada na primeira entrega.
 
-| Etapa | Ação do cliente | Resposta do sistema |
-| --- | --- | --- |
-| Acesso | Escaneia o QR Code disponível no estabelecimento | Abre a aplicação web sem solicitar login |
-| Consulta | Visualiza a lista de caixas | Apresenta disponibilidade, pessoas, produtos e espera |
-| Decisão | Compara as alternativas | Destaca o caixa com menor espera estimada |
-| Acompanhamento | Mantém a página aberta | Atualiza os dados por consultas periódicas à API |
+| Etapa          | Ação do cliente                                  | Resposta do sistema                                   |
+| -------------- | ------------------------------------------------ | ----------------------------------------------------- |
+| Acesso         | Escaneia o QR Code disponível no estabelecimento | Abre a aplicação web sem solicitar login              |
+| Consulta       | Visualiza a lista de caixas                      | Apresenta disponibilidade, pessoas, produtos e espera |
+| Decisão        | Compara as alternativas                          | Destaca o caixa com menor espera estimada             |
+| Acompanhamento | Mantém a página aberta                           | Atualiza os dados por consultas periódicas à API      |
 
 Esse recorte foi escolhido por concentrar o benefício principal da proposta e permitir testar a integração entre interface, API e banco sem depender de sensores físicos.
 
@@ -78,19 +78,19 @@ Sensores físicos, autenticação administrativa, relatórios gerenciais, pagame
 
 As versões abaixo correspondem aos arquivos do pacote utilizado para elaborar este README; não representam uma atualização automática para versões futuras.
 
-| Componente | Versão ou requisito |
-| --- | --- |
-| Java | JDK 25, com `JAVA_HOME` configurado |
-| Spring Boot | 4.1.2 |
-| Maven | 3.9.11 pelo Maven Wrapper; instalação global opcional |
-| PostgreSQL | 17 na configuração Docker fornecida |
-| Node.js | Linha 24; alternativamente linha 22 a partir de 22.12.0 |
-| npm | 10 ou 11 |
-| React e React DOM | 19.3.1 |
-| TypeScript | 5.9.3 |
-| Vite | 7.3.7 |
-| Tailwind CSS e plugin Vite | 4.3.4 |
-| Docker Compose | Opcional, somente para iniciar o banco |
+| Componente                 | Versão ou requisito                                     |
+| -------------------------- | ------------------------------------------------------- |
+| Java                       | JDK 25, com `JAVA_HOME` configurado                     |
+| Spring Boot                | 4.1.2                                                   |
+| Maven                      | 3.9.11 pelo Maven Wrapper; instalação global opcional   |
+| PostgreSQL                 | 17 na configuração Docker fornecida                     |
+| Node.js                    | Linha 24; alternativamente linha 22 a partir de 22.12.0 |
+| npm                        | 10 ou 11                                                |
+| React e React DOM          | 19.3.1                                                  |
+| TypeScript                 | 5.9.3                                                   |
+| Vite                       | 7.3.7                                                   |
+| Tailwind CSS e plugin Vite | 4.3.4                                                   |
+| Docker Compose             | Opcional, somente para iniciar o banco                  |
 
 O backend utiliza Spring MVC, Bean Validation, Spring Data JPA e Hibernate, sem Lombok. Os DTOs utilizam records. O frontend mantém as versões no `package.json` e no `package-lock.json`; utilize `npm ci` para reproduzi-las.
 
@@ -111,34 +111,34 @@ O navegador executa a interface React. As requisições são atendidas pela API 
 
 No desenvolvimento, o Vite encaminha requisições `/api` para `http://localhost:8080`. O navegador utiliza a mesma origem do frontend, dispensando uma configuração separada de CORS nesse modo.
 
-| Caminho | Conteúdo |
-| --- | --- |
-| `README.md` | Guia principal do repositório |
-| `frontend/` | Aplicação React, estilos, configuração Vite e dependências |
-| `frontend/src/` | Código-fonte da interface |
-| `backend/pom.xml` | Dependências e configuração Maven |
-| `backend/mvnw` e `backend/mvnw.cmd` | Inicialização do Maven no Linux/macOS e Windows |
-| `backend/.mvn/wrapper/` | Configuração do Maven Wrapper |
-| `backend/compose.yaml` | PostgreSQL local com volume persistente |
-| `backend/src/main/java/br/edu/senac/queue/` | Código-fonte da API |
-| `backend/src/main/resources/application.yml` | Configuração Spring com variáveis de ambiente |
-| `backend/src/main/resources/schema.sql` | Criação da tabela |
-| `backend/src/main/resources/data.sql` | Dados iniciais idempotentes |
-| `backend/src/test/` | Testes automatizados do backend |
-| `backend/docs/` | Guias de validação, compatibilidade e entrega |
+| Caminho                                      | Conteúdo                                                   |
+| -------------------------------------------- | ---------------------------------------------------------- |
+| `README.md`                                  | Guia principal do repositório                              |
+| `frontend/`                                  | Aplicação React, estilos, configuração Vite e dependências |
+| `frontend/src/`                              | Código-fonte da interface                                  |
+| `backend/pom.xml`                            | Dependências e configuração Maven                          |
+| `backend/mvnw` e `backend/mvnw.cmd`          | Inicialização do Maven no Linux/macOS e Windows            |
+| `backend/.mvn/wrapper/`                      | Configuração do Maven Wrapper                              |
+| `backend/compose.yaml`                       | PostgreSQL local com volume persistente                    |
+| `backend/src/main/java/br/edu/senac/queue/`  | Código-fonte da API                                        |
+| `backend/src/main/resources/application.yml` | Configuração Spring com variáveis de ambiente              |
+| `backend/src/main/resources/schema.sql`      | Criação da tabela                                          |
+| `backend/src/main/resources/data.sql`        | Dados iniciais idempotentes                                |
+| `backend/src/test/`                          | Testes automatizados do backend                            |
+| `backend/docs/`                              | Guias de validação, compatibilidade e entrega              |
 
 ### Responsabilidades do backend
 
-| Classe | Responsabilidade |
-| --- | --- |
-| `CheckoutController` | Consulta dos caixas |
+| Classe                 | Responsabilidade                  |
+| ---------------------- | --------------------------------- |
+| `CheckoutController`   | Consulta dos caixas               |
 | `SimulationController` | Atualizações no modo de simulação |
-| `CheckoutService` | Validação e regras da aplicação |
-| `WaitEstimator` | Cálculo da estimativa |
-| `CheckoutRepository` | Acesso aos registros persistidos |
-| `Checkout` | Entidade de caixa |
-| `CheckoutUpdate` | Dados recebidos na atualização |
-| `ApiErrors` | Tratamento dos erros da API |
+| `CheckoutService`      | Validação e regras da aplicação   |
+| `WaitEstimator`        | Cálculo da estimativa             |
+| `CheckoutRepository`   | Acesso aos registros persistidos  |
+| `Checkout`             | Entidade de caixa                 |
+| `CheckoutUpdate`       | Dados recebidos na atualização    |
+| `ApiErrors`            | Tratamento dos erros da API       |
 
 ## Banco de dados e regras
 
@@ -146,14 +146,14 @@ No desenvolvimento, o Vite encaminha requisições `/api` para `http://localhost
 
 A PoC utiliza a tabela `checkouts`:
 
-| Coluna | Tipo SQL | Finalidade |
-| --- | --- | --- |
-| `id` | `BIGINT PRIMARY KEY` | Identificador do caixa |
-| `number` | `INTEGER NOT NULL UNIQUE` | Número exibido ao cliente |
-| `open` | `BOOLEAN NOT NULL` | Disponibilidade do caixa |
-| `people` | `INTEGER NOT NULL` | Quantidade de pessoas na fila |
-| `products` | `INTEGER NOT NULL` | Quantidade total de produtos dessas pessoas |
-| `updated_at` | `TIMESTAMP WITH TIME ZONE NOT NULL` | Momento da atualização |
+| Coluna       | Tipo SQL                            | Finalidade                                  |
+| ------------ | ----------------------------------- | ------------------------------------------- |
+| `id`         | `BIGINT PRIMARY KEY`                | Identificador do caixa                      |
+| `number`     | `INTEGER NOT NULL UNIQUE`           | Número exibido ao cliente                   |
+| `open`       | `BOOLEAN NOT NULL`                  | Disponibilidade do caixa                    |
+| `people`     | `INTEGER NOT NULL`                  | Quantidade de pessoas na fila               |
+| `products`   | `INTEGER NOT NULL`                  | Quantidade total de produtos dessas pessoas |
+| `updated_at` | `TIMESTAMP WITH TIME ZONE NOT NULL` | Momento da atualização                      |
 
 A espera é calculada pela aplicação, sem coluna própria no banco.
 
@@ -175,12 +175,12 @@ Os coeficientes são hipóteses didáticas. Não há inteligência artificial ne
 
 ### Dados iniciais
 
-| Caixa | Aberto | Pessoas | Produtos | Espera calculada |
-| --- | --- | --- | --- | --- |
-| 1 | Sim | 2 | 40 | 460 s — 7 min 40 s |
-| 2 | Sim | 3 | 15 | 240 s — 4 min |
-| 3 | Sim | 1 | 30 | 330 s — 5 min 30 s |
-| 4 | Não | 0 | 0 | Não participa |
+| Caixa | Aberto | Pessoas | Produtos | Espera calculada   |
+| ----- | ------ | ------- | -------- | ------------------ |
+| 1     | Sim    | 2       | 40       | 460 s — 7 min 40 s |
+| 2     | Sim    | 3       | 15       | 240 s — 4 min      |
+| 3     | Sim    | 1       | 30       | 330 s — 5 min 30 s |
+| 4     | Não    | 0       | 0        | Não participa      |
 
 O caixa 2 é recomendado nesse cenário.
 
@@ -188,10 +188,10 @@ O caixa 2 é recomendado nesse cenário.
 
 ### 1. Obter o código
 
-Clone o repositório, substituindo `SEU_USUARIO` pelo proprietário correto:
+Clone o repositório:
 
 ```sh
-git clone https://github.com/SEU_USUARIO/fila-clara.git
+git clone https://github.com/vanessadias/fila-clara.git
 cd fila-clara
 ```
 
@@ -282,13 +282,13 @@ Pressione `Ctrl+C` nos terminais do frontend e backend. Se utilizou Docker, exec
 
 ## Configuração por ambiente
 
-| Variável do backend | Padrão | Finalidade |
-| --- | --- | --- |
-| `DB_URL` | `jdbc:postgresql://localhost:5432/queue_demo` | Conexão JDBC |
-| `DB_USER` | `queue_user` | Usuário do banco |
-| `DB_PASSWORD` | `queue_local` | Senha local de exemplo |
-| `PORT` | `8080` | Porta HTTP do backend |
-| `SIMULATION_ENABLED` | `false` | Habilita as rotas de edição da simulação |
+| Variável do backend  | Padrão                                        | Finalidade                               |
+| -------------------- | --------------------------------------------- | ---------------------------------------- |
+| `DB_URL`             | `jdbc:postgresql://localhost:5432/queue_demo` | Conexão JDBC                             |
+| `DB_USER`            | `queue_user`                                  | Usuário do banco                         |
+| `DB_PASSWORD`        | `queue_local`                                 | Senha local de exemplo                   |
+| `PORT`               | `8080`                                        | Porta HTTP do backend                    |
+| `SIMULATION_ENABLED` | `false`                                       | Habilita as rotas de edição da simulação |
 
 O Spring lê essas variáveis do processo: **não carrega automaticamente um arquivo `.env`**. Os comandos deste guia usam `application.yml` e não exigem criar ou ativar um perfil `local`.
 
@@ -302,11 +302,11 @@ A edição não possui autenticação. Habilite `SIMULATION_ENABLED=true` soment
 
 URL base local: `http://localhost:8080`.
 
-| Método | Endpoint | Comportamento |
-| --- | --- | --- |
-| GET | `/api/health` | Estado do processo |
-| GET | `/api/caixas` | Retorna `checkouts`, `recommendedId` e `fetchedAt` |
-| PATCH | `/api/caixas/{id}` | Atualiza um caixa com a simulação habilitada |
+| Método | Endpoint           | Comportamento                                      |
+| ------ | ------------------ | -------------------------------------------------- |
+| GET    | `/api/health`      | Estado do processo                                 |
+| GET    | `/api/caixas`      | Retorna `checkouts`, `recommendedId` e `fetchedAt` |
+| PATCH  | `/api/caixas/{id}` | Atualiza um caixa com a simulação habilitada       |
 
 O PATCH aceita qualquer subconjunto não vazio de `open`, `people` e `products`, respeitando o estado final válido do caixa.
 
@@ -388,17 +388,17 @@ O build executa a verificação TypeScript e a construção do Vite. Não há sc
 
 ### Aceite manual
 
-| Cenário | Resultado esperado | Registro final do grupo |
-| --- | --- | --- |
-| Instalação a partir de cópia limpa | Banco, API e interface iniciam seguindo este guia | A preencher |
-| Consulta inicial | Caixa 2 recomendado | A preencher |
-| Caixa 2 com 100 produtos e 3 pessoas | Caixa 3 recomendado | A preencher |
-| Todos os caixas fechados | Ausência de recomendação | A preencher |
-| Quantidades inválidas pela API | HTTP 400 | A preencher |
-| Identificador inexistente com simulação ativa | HTTP 404 | A preencher |
-| Reinício do backend após alteração | Dados continuam persistidos | A preencher |
-| QR Code no celular | Página acessível e layout utilizável | A preencher |
-| Falha de consulta | Erro apresentado, sem recomendação desatualizada | A preencher |
+| Cenário                                       | Resultado esperado                                | Registro final do grupo |
+| --------------------------------------------- | ------------------------------------------------- | ----------------------- |
+| Instalação a partir de cópia limpa            | Banco, API e interface iniciam seguindo este guia | A preencher             |
+| Consulta inicial                              | Caixa 2 recomendado                               | A preencher             |
+| Caixa 2 com 100 produtos e 3 pessoas          | Caixa 3 recomendado                               | A preencher             |
+| Todos os caixas fechados                      | Ausência de recomendação                          | A preencher             |
+| Quantidades inválidas pela API                | HTTP 400                                          | A preencher             |
+| Identificador inexistente com simulação ativa | HTTP 404                                          | A preencher             |
+| Reinício do backend após alteração            | Dados continuam persistidos                       | A preencher             |
+| QR Code no celular                            | Página acessível e layout utilizável              | A preencher             |
+| Falha de consulta                             | Erro apresentado, sem recomendação desatualizada  | A preencher             |
 
 Registre data, responsável, ambiente, resultado observado e evidências no [roteiro de entrega](backend/docs/ROTEIRO_ENTREGA.md). Substitua “A preencher” somente após executar cada cenário.
 
@@ -454,25 +454,25 @@ Não use `npm run preview` como substituto da integração sem configurar o enca
 
 O vídeo deve ter no máximo **1 minuto**, com o projeto em execução. Roteiro sugerido:
 
-| Tempo | Demonstração |
-| --- | --- |
-| 0–10 s | Problema e jornada selecionada |
-| 10–25 s | Consulta dos caixas e recomendação inicial |
-| 25–45 s | Alteração da fila e mudança de recomendação |
+| Tempo   | Demonstração                                        |
+| ------- | --------------------------------------------------- |
+| 0–10 s  | Problema e jornada selecionada                      |
+| 10–25 s | Consulta dos caixas e recomendação inicial          |
+| 25–45 s | Alteração da fila e mudança de recomendação         |
 | 45–60 s | Resultado e esclarecimento sobre os dados simulados |
 
 **Documento acadêmico:** PENDENTE — inserir o link ou caminho da versão final conforme o template oficial do Blackboard. O README apoia a reprodução técnica e não substitui esse documento.
 
 ### Correspondência com os critérios do enunciado
 
-| Critério | Pontos | Conteúdo ou evidência |
-| --- | --- | --- |
-| Revisitação e definição da PoC | 1 | Problema, jornada e justificativa do recorte |
-| Ambiente e stack | 2 | Pré-requisitos, configurações e instalação |
-| Frontend | 2 | Consulta responsiva e jornada funcionando |
-| Backend | 2 | API, regras, validação e persistência |
-| Vídeo | 1 | Demonstração publicada de até 1 minuto |
-| GitHub | 2 | Código completo, README, colaboradores e contribuições reais |
+| Critério                       | Pontos | Conteúdo ou evidência                                        |
+| ------------------------------ | ------ | ------------------------------------------------------------ |
+| Revisitação e definição da PoC | 1      | Problema, jornada e justificativa do recorte                 |
+| Ambiente e stack               | 2      | Pré-requisitos, configurações e instalação                   |
+| Frontend                       | 2      | Consulta responsiva e jornada funcionando                    |
+| Backend                        | 2      | API, regras, validação e persistência                        |
+| Vídeo                          | 1      | Demonstração publicada de até 1 minuto                       |
+| GitHub                         | 2      | Código completo, README, colaboradores e contribuições reais |
 
 ### Checklist de publicação
 
@@ -515,21 +515,21 @@ Abra um pull request para `main`, descreva o que mudou e peça a revisão de out
 
 ## Problemas frequentes
 
-| Sintoma | Verificação ou solução |
-| --- | --- |
-| Java incompatível | Conferir `java -version` e `JAVA_HOME`; utilizar JDK 25 |
-| `mvnw` sem permissão | No Linux/macOS, executar `chmod +x mvnw` |
-| Falha de autenticação do PostgreSQL | Conferir usuário e senha do banco e as variáveis do terminal do backend |
-| Conexão recusada na porta 5432 | Iniciar o PostgreSQL e conferir host, porta e `docker compose ps` |
-| Porta 5432 ocupada | Escolher entre PostgreSQL instalado e Docker ou ajustar o mapeamento e `DB_URL` |
-| Porta 8080 ocupada | Encerrar o processo conflitante ou alterar `PORT` e o proxy Vite |
-| PATCH retorna 404 | Conferir o ID e iniciar o backend com `SIMULATION_ENABLED=true` |
-| PATCH retorna 400 | Conferir limites, inteiros, corpo não vazio e consistência entre pessoas e produtos |
-| Frontend não carrega os caixas | Testar `/api/caixas`, conferir o backend e o proxy do Vite |
-| Caixa 2 não é recomendado ao abrir | Conferir se o banco já contém alterações de demonstrações anteriores |
-| QR Code não abre no celular | Usar IP da máquina, mesma rede e permissão no firewall |
-| Configuração `.env` não afeta a API | Definir as variáveis no terminal: Spring não lê `.env` automaticamente |
-| Dependências Node incompatíveis | Utilizar Node/npm nas faixas indicadas e executar `npm ci` com o lock fornecido |
+| Sintoma                             | Verificação ou solução                                                              |
+| ----------------------------------- | ----------------------------------------------------------------------------------- |
+| Java incompatível                   | Conferir `java -version` e `JAVA_HOME`; utilizar JDK 25                             |
+| `mvnw` sem permissão                | No Linux/macOS, executar `chmod +x mvnw`                                            |
+| Falha de autenticação do PostgreSQL | Conferir usuário e senha do banco e as variáveis do terminal do backend             |
+| Conexão recusada na porta 5432      | Iniciar o PostgreSQL e conferir host, porta e `docker compose ps`                   |
+| Porta 5432 ocupada                  | Escolher entre PostgreSQL instalado e Docker ou ajustar o mapeamento e `DB_URL`     |
+| Porta 8080 ocupada                  | Encerrar o processo conflitante ou alterar `PORT` e o proxy Vite                    |
+| PATCH retorna 404                   | Conferir o ID e iniciar o backend com `SIMULATION_ENABLED=true`                     |
+| PATCH retorna 400                   | Conferir limites, inteiros, corpo não vazio e consistência entre pessoas e produtos |
+| Frontend não carrega os caixas      | Testar `/api/caixas`, conferir o backend e o proxy do Vite                          |
+| Caixa 2 não é recomendado ao abrir  | Conferir se o banco já contém alterações de demonstrações anteriores                |
+| QR Code não abre no celular         | Usar IP da máquina, mesma rede e permissão no firewall                              |
+| Configuração `.env` não afeta a API | Definir as variáveis no terminal: Spring não lê `.env` automaticamente              |
+| Dependências Node incompatíveis     | Utilizar Node/npm nas faixas indicadas e executar `npm ci` com o lock fornecido     |
 
 ## Limitações e próximos passos
 
