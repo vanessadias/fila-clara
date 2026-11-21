@@ -1,0 +1,19 @@
+server:
+  port: ${PORT:8080}
+spring:
+  jackson:
+    deserialization:
+      accept-float-as-int: false
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/queue_demo}
+    username: ${DB_USER:queue_user}
+    password: ${DB_PASSWORD:queue_local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  sql:
+    init:
+      mode: always
+app:
+  simulation-enabled: ${SIMULATION_ENABLED:false}

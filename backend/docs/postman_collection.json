@@ -1,0 +1,81 @@
+{
+  "info": {
+    "name": "Fila Clara PoC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Saúde",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health",
+        "header": []
+      }
+    },
+    {
+      "name": "Consultar caixas",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/caixas",
+        "header": []
+      }
+    },
+    {
+      "name": "Aumentar fila 2",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/api/caixas/2",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"people\": 3, \"products\": 100, \"open\": true}"
+        }
+      }
+    },
+    {
+      "name": "Restaurar caixa 2",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/api/caixas/2",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"people\": 3, \"products\": 15, \"open\": true}"
+        }
+      }
+    },
+    {
+      "name": "Rejeitar negativo",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/api/caixas/1",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"people\": -1}"
+        }
+      }
+    }
+  ]
+}

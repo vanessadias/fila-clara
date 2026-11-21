@@ -1,0 +1,74 @@
+# Java / Maven: arquivos gerados
+**/target/
+*.class
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+
+# React / Vite / Node: dependencias e builds
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/.vite/
+**/coverage/
+*.tsbuildinfo
+
+# Logs e arquivos temporarios
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.swp
+*.swo
+*~
+
+# Variaveis de ambiente locais
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.template
+
+# Configuracoes Spring locais: mantenha exemplos sem credenciais
+**/application-local.yml
+**/application-local.yaml
+**/application-local.properties
+**/application-secrets.yml
+**/application-secrets.yaml
+**/application-secrets.properties
+
+# Chaves e certificados privados
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Dados locais de banco (scripts SQL continuam versionados)
+**/pgdata/
+**/postgres-data/
+*.dump
+*.backup
+
+# Configuracoes pessoais de IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IMPORTANTE: versionar pom.xml, package.json, package-lock.json,
+# mvnw, mvnw.cmd, .mvn/wrapper/, SQL, testes e documentacao.
+# Arquivos application.yml/properties devem usar variaveis de ambiente
+# ou valores de exemplo, nunca credenciais reais.

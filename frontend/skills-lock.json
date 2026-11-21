@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "skills": {
+    "frontend-design": {
+      "source": "vercel-labs/agent-eval",
+      "commit": "9ff2ea3e9f14c14e5123b215c3f695d3b4f9955d",
+      "sourceType": "github",
+      "skillPath": "packages/playground/.agents/skills/frontend-design/SKILL.md",
+      "computedHash": "a7c81a25c7ea1972f7049cd0282545c72ae92237c1b45ba7b1370fab498f5f9b"
+    },
+    "impeccable-design": {
+      "source": "majinmagros/magros.ai-skills",
+      "commit": "1b0e898750c0499f805dd2b89d697df59c950678",
+      "sourceType": "github",
+      "skillPath": "skills/impeccable-design/SKILL.md",
+      "computedHash": "4536e246b76e06adc3b62f9bb4ae35999492bca77fe3fc2e754414608863d9af"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "commit": "2de1134dc4d1cfe112934611ae5803ae17a1bd7e",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "605686282fb6812d8e3f4b1a06c9fb8ba7be4d7395090f41f221a9ba5a3dbe6b"
+    }
+  }
+}
