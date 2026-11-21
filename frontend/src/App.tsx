@@ -493,7 +493,7 @@ export default function App() {
           </details>
         </div>
         <footer className="page-footer">
-          <span>Fila Certa</span>
+          <span>Fila Clara</span>
           <span>Dados simulados · estimativas aproximadas</span>
         </footer>
       </main>
